@@ -1,0 +1,162 @@
+#+title: Python Beginner Std
+
+Python is the most popular programming language, also its more than just a programming language that many people started to take interest and have done courses, it is so friendly and as near to our natural language that it is also considered as general purpose programming language for all.
+
+* Beginner's Fun
+#+begin_src python :results output drawer
+  year = 10
+  weeksYear = 52
+  weeksDecade = year * weeksYear
+
+  print("The number of weeks in " + str(year) + " year is: " + str(weeksDecade))
+
+#+end_src
+
+#+RESULTS:
+:results:
+The number of weeks in 10 year is: 520
+:end:
+
+** Strip cool output
+
+Lets bring out an user expected output.
+
+#+begin_src python :results output drawer
+  name = " This is a phrase. \n\t Run this in python.\nIt has got us covered. "
+
+  fixedName = name.strip()
+
+  print(fixedName)
+
+#+end_src
+
+#+RESULTS:
+:results:
+This is a phrase. 
+	 Run this in python.
+It has got us covered.
+:end:
+
+** Cutting the edge
+
+Let's see how to remove some unwanted or obvious string, so we save space and let output be minimal.
+
+#+begin_src python :results output drawer
+  url = "https://orgmode.org"
+
+  print(url.removeprefix('https://'))
+#+end_src
+
+#+RESULTS:
+:results:
+orgmode.org
+:end:
+
+** Color Data
+
+To ask for our favorite color and send us data.
+
+Note: This won't work with org babel (if I'm not wrong), so we cannot print out the results as it is interactive. We can directly assign some word to the variable than asking us the input, but inside ~org-edit-special~ you can start python interpreter by running ~run-python~ or press ~C-c C-p~, then you can evaluate lines or buffer accordingly (~C-c C-c~).
+You should see a buffer called "Python".
+
+#+begin_src python
+  # Simple one, which asks for favorite color with pretty output
+
+  name = input("Please input your name: ")
+  favcolor = input("and what is your favorite color: ")
+  print("=" * 30 + "󰅂")
+  print("Hello " + name)
+
+  # legacy style
+  # print("Sent data that, " + name + "'s " + "favorite color is " + favcolor)
+  # better style (we use fstring here)
+  print(f"Sent data that, {name}'s favorite color is {favcolor}")
+
+  print("=" * 20 + "󰅂")
+
+#+end_src
+
+* Informal Walkthrough
+** Comments
+#+begin_src python :results output drawer
+  # this is the first comment
+  spam = 1  # and this is the second comment
+	    # ... and now a third!
+  text = "Now # This is not a comment because it's inside quotes."
+
+  print(spam)
+  print(text)
+#+end_src
+
+#+RESULTS:
+:results:
+1
+Now # This is not a comment because it's inside quotes.
+:end:
+
+** Calci-py
+
+| ~+ - * /~ | Add, subtract, multiply & division operator                 |
+| ~//~      | Floor Division (divides and gives integer, no Decimal part) |
+| ~%~       | Gets the remainder from division                            |
+| ~**~      | Power operator                                              |
+| ~()~      | Acts as bracket for grouping                                |
+| ~_~       | Variable that is assigned to the last printed expression    |
+
+
+#+begin_src python
+  # if you are on emacs, just press C-c C-e on each line
+
+  # Normal expected arithmetic
+  25 + 3
+  25 - 3
+  25 * 3
+  25 / 3
+
+  # Spiced up calculations
+  25 // 3        # floor division
+  25 % 3         # remainder
+  25 ** 3        # power
+  25 + 3 / 2     # BODMAS priority
+  (25 + 3) / 2   # BODMAS priority
+
+  x = 25 + 3
+  y = 2
+  x / y          # Compare to above example and think
+		 # maybe try other way too
+
+#+end_src
+
+** Types
+
+| int    | Integer (-32,+65) |
+| float  | Decimals (12.05)  |
+| string | quotes (' or ")   |
+| escape | escape (\)        |
+|        |                   |
+
+#+begin_src python :results output drawer
+  # play strings
+
+  'simple life'
+  "simple life"
+
+  # python is so smart that it makes the delimiting single quote as double
+  # since I have used an single quote by escaping
+  'life\'s simple'
+  "life is \"simple\"" # makes it single quote here
+
+  # but you can use other quote freely, no need to escape
+  'life is "simple"'
+  "life's simple"
+
+  # weird part: think yourself
+  '"life\'s simple"'
+
+  # Note: I did not use print() function
+  # Print function smartly show us clean output
+  print('"life\'s simple"')
+
+  # You can go raw (r) with nothing to act upon
+  print(r'"Z:\home\user"')
+#+end_src
