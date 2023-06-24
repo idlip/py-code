@@ -1,0 +1,80 @@
+#+title: Bio Dna In Python
+#+author: Dilip
+
+* Finding ORI site
+
+In the rest of this chapter, we will focus on the relatively easy case of finding ori in bacterial genomes, most of which consist of a single circular chromosome. Research has shown that the region of the bacterial genome encoding ori is typically a few hundred nucleotides long. Our plan is to begin with a bacterium in which ori is known, and then determine what makes this genomic region special in order to design a computational approach for finding ori in other bacteria. Our example is /Vibrio cholerae/, the pathogenic bacterium that causes cholera; here is the nucleotide sequence appearing in the ori of /Vibrio cholerae/:
+
+#+begin_src text
+atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaac ctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgacca cggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgactt gtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggatt acgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttagga tagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaat tgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaag atcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtt tccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc
+#+end_src
+
+** Lenght of genome sequence
+
+#+begin_src python :results output
+  ori_seq = "atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaacctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgaccacggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgacttgtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggattacgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttaggatagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaattgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaagatcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtttccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc"
+  print(len(ori))
+#+end_src
+
+#+RESULTS:
+: 540
+
+** Dna concentration
+
+#+begin_src python :results output
+  absorbance = 3.741 
+  coeff = 0.02 # molar absorbtivity 
+  path_length = 1
+
+  dna_conc = absorbance/(coeff*path_length) # using variables
+
+  dna_conc = round(dna_conc, 1) # rounds to 1 decimal  place
+
+  print(dna_conc) # prints value of dna_concentration
+
+#+end_src
+
+#+RESULTS:
+: 187.1
+
+**  G of ATP Synthesis
+
++ Formula
+#+begin_src latex
+  ΔG = ΔG0 + RT * ln ([ADP] * [P_in] / [ATP])
+#+end_src
+
+#+begin_src python :results output
+  import math
+
+  deltaG0 = 3.7
+  R = 1.7 # gas constant
+  T = 4 # temperature
+  ADP = 0.00823 # Adenosine di-phosphate
+  P_in = 298 
+  ATP = 30.7 # Adenosine tri-phosphate
+
+  deltaG = deltaG0 + R * T * math.log(ADP * P_in / ATP)
+
+  # round deltaG to required number of dps  as in last step
+
+  deltaG = round(deltaG, 3)
+
+  print(deltaG)
+#+end_src
+
+#+RESULTS:
+: -13.485
+
+** Stop sliding
+Should fix this code
+#+begin_src python :results output
+  def PatternCount(Text, Pattern):
+      count = 0
+      for i in range(len(Text)-len(Pattern)+1):
+	  if Text[i:i+len(Pattern)] == Pattern:
+	      count = count+1
+      return count 
+
+#+end_src
+
