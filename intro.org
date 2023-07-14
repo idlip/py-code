@@ -3,7 +3,7 @@
 Python is the most popular programming language, also its more than just a programming language that many people started to take interest and have done courses, it is so friendly and as near to our natural language that it is also considered as general purpose programming language for all.
 
 * Beginner's Fun
-#+begin_src python :results output drawer
+#+begin_src python :results output drawer :tangle ./codes/weeks.py
   year = 10
   weeksYear = 52
   weeksDecade = year * weeksYear
@@ -21,13 +21,14 @@ The number of weeks in 10 year is: 520
 
 Lets bring out an user expected output.
 
-#+begin_src python :results output drawer
+#+begin_src python :results output drawer :tangle ./codes/weeks.py
   name = " This is a phrase. \n\t Run this in python.\nIt has got us covered. "
 
   fixedName = name.strip()
 
   print(fixedName)
-
+  # It prints removing the extra spaces from beginning and eng
+  # see help(name.strip)
 #+end_src
 
 #+RESULTS:
@@ -41,7 +42,7 @@ It has got us covered.
 
 Let's see how to remove some unwanted or obvious string, so we save space and let output be minimal.
 
-#+begin_src python :results output drawer
+#+begin_src python :results output drawer :tangle ./codes/cut.py
   url = "https://orgmode.org"
 
   print(url.removeprefix('https://'))
@@ -59,7 +60,7 @@ To ask for our favorite color and send us data.
 Note: This won't work with org babel (if I'm not wrong), so we cannot print out the results as it is interactive. We can directly assign some word to the variable than asking us the input, but inside ~org-edit-special~ you can start python interpreter by running ~run-python~ or press ~C-c C-p~, then you can evaluate lines or buffer accordingly (~C-c C-c~).
 You should see a buffer called "Python".
 
-#+begin_src python
+#+begin_src python :tangle ./codes/color.py
   # Simple one, which asks for favorite color with pretty output
 
   name = input("Please input your name: ")
@@ -78,7 +79,7 @@ You should see a buffer called "Python".
 
 * Informal Walkthrough
 ** Comments
-#+begin_src python :results output drawer
+#+begin_src python :results output drawer :tangle ./codes/comments.py
   # this is the first comment
   spam = 1  # and this is the second comment
 	    # ... and now a third!
@@ -104,7 +105,7 @@ Now # This is not a comment because it's inside quotes.
 | ~_~       | Variable that is assigned to the last printed expression    |
 
 
-#+begin_src python
+#+begin_src python :tangle ./codes/calc.py
   # if you are on emacs, just press C-c C-e on each line
 
   # Normal expected arithmetic
@@ -135,7 +136,7 @@ Now # This is not a comment because it's inside quotes.
 | escape | escape (\)        |
 |        |                   |
 
-#+begin_src python :results output drawer
+#+begin_src python :results output drawer  :tangle ./codes/types.py
   # play strings
 
   'simple life'
